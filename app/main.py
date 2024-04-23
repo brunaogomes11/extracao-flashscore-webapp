@@ -8,18 +8,22 @@ app = Flask(__name__)
 @app.route("/extracao", methods=["GET", "POST"])
 def extrairDadosPagina():
     if request.method == "POST":
-        nomeModelo = request.form['nomeModelo']
-        tempos = []
-        temposInput0 = request.form.get('tempo0')
-        if temposInput0 != None: tempos.append(temposInput0)
-        temposInput1 = request.form.get('tempo1')
-        if temposInput1 != None: tempos.append(temposInput1)
-        temposInput2 = request.form.get('tempo2')
-        if temposInput2 != None: tempos.append(temposInput2)
-        campeonato = request.form['campeonato']
-        pais = request.form['paises']
-        get_data_from_tournament(nomeModelo, pais, campeonato, tempos)
-        return redirect("/extracao/completos")
+        try:
+            nomeModelo = request.form['nomeModelo']
+            tempos = []
+            temposInput0 = request.form.get('tempo0')
+            if temposInput0 != None: tempos.append(temposInput0)
+            temposInput1 = request.form.get('tempo1')
+            if temposInput1 != None: tempos.append(temposInput1)
+            temposInput2 = request.form.get('tempo2')
+            if temposInput2 != None: tempos.append(temposInput2)
+            campeonato = request.form['campeonato']
+            pais = request.form['paises']
+            get_data_from_tournament(nomeModelo, pais, campeonato, tempos)
+            return redirect("/extracao/completos")
+        except Exception as e:
+            print(e)
+            return render_template("extrairDados.html") 
     return render_template("extrairDados.html")
 
 @app.route("/extracao/completos")
