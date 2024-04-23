@@ -1,0 +1,136 @@
+#formCriar {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+#modalEntradas {
+    display: none;
+}
+#submitButton {
+    width: auto;
+    padding: 10px;
+    padding-top: auto;
+    padding-bottom: auto;
+    margin: 5px;
+    text-align: center;
+    background-color: white;
+    color: #3c31dd;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: scale 300ms;
+}
+
+.checkBoxDiv {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+}
+
+.inputForm {
+    margin: 10px;
+}
+
+input[type="text"], select {
+    border-radius: 10px;
+    padding: 5px 10px;
+    width: 25vw;
+    border: 0;
+    align-self: center;
+}
+
+
+/* Loading */
+.load {
+    visibility: hidden;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #00000070;
+}
+
+#load-text-div {
+    position: absolute;
+    top: 60%;
+    width: 100%;
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #003585a6;
+}
+
+.load-man {
+    -webkit-animation: load-man-travel 1.2s infinite linear;
+            animation: load-man-travel 1.2s infinite linear;
+    background: repeating-linear-gradient(90deg, #000000, #000000 5%, transparent 5%, transparent 35%);
+    height: 10px;
+    left: 50%;
+    margin-top: -5px;
+    position: absolute;
+    top: 50%;
+    width: 200px;
+    /**
+      * Our pseudo elements create the head pieces
+      *
+      * They are near identical minus subtle differences in animation and border
+      * styling
+    */
+    /**
+    * The top head piece
+    */
+    /**
+    * The bottom head piece
+    */ }
+.load-man:after, .load-man:before {
+    content: '';
+    position: absolute;
+    left: -25px;
+    top: 50%;
+    border: 25px solid #ffe600;
+    border-radius: 100%;
+    margin-top: -25px; }
+.load-man:before {
+    --close: -90;
+    -webkit-animation: load-man-chomp 0.35s infinite linear;
+            animation: load-man-chomp 0.35s infinite linear;
+    border-bottom-color: transparent;
+    border-left-color: transparent; 
+}
+.load-man:after {
+    --close: 0;
+    -webkit-animation: load-man-chomp 0.35s infinite linear;
+            animation: load-man-chomp 0.35s infinite linear;
+    border-right-color: transparent;
+    border-top-color: transparent; 
+}
+
+@-webkit-keyframes load-man-travel {
+to {
+    background-position: -200px 0; } }
+
+@keyframes load-man-travel {
+to {
+    background-position: -200px 0; } }
+
+@-webkit-keyframes load-man-chomp {
+0% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg); }
+50% {
+    -webkit-transform: rotate(calc(var(--close) * 1deg));
+            transform: rotate(calc(var(--close) * 1deg)); }
+100% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg); } }
+
+@keyframes load-man-chomp {
+0% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg); }
+50% {
+    -webkit-transform: rotate(calc(var(--close) * 1deg));
+            transform: rotate(calc(var(--close) * 1deg)); }
+100% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg); } }
