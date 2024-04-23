@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial - Extração Flashscore</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='index.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='baixarDataset.css')}}">
+    <link rel="stylesheet" href="../static/index.css">
+    <link rel="stylesheet" href="../static/extrairDados.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <img src="{{ url_for('static', filename='images/logo.png')}}" id="logo" alt="Logo da mineração de dados do site flashscore">
+        <div class="menuDiv">
+            <a href="{{url_for('homePage')}}" class="menuItem">PÁGINA INICIAL</a>
+            <a href="{{url_for('extrairDadosPagina')}}" class="menuItem">EXTRAÇÃO</a>
+            <a class="menuItem active">DATASETS</a>
+        </div>
+    </header>
+    <div class="main">
+        <ul id="listaModelos">
+            <li id="caracteristicaLista">
+                <span>Nome</span>
+                <a></a>
+            </li>
+        </ul>
+    </div>
+    <script  type="text/javascript">
+        let nomes = `{{ nomes }}`
+        nomes = nomes.replace(/[&#39;]/g, "").replace("]", "").replace("[", "").split(",")
+        for (let i = 1; i < nomes.length; i++) {
+            nomes[i] = nomes[i].trim();
+        }
+        for(let index = 0; index < nomes.length; index++) {
+            filename = nomes[index]
+            document.querySelector("#listaModelos").innerHTML += `
+            <li class="modeloCriadoItem">
+                <span>${filename}</span>
+                <a href="/extracao/completos/${filename}" class="button">Baixar</a>
+            </li>
+            `
+        }
+    </script>
+</body>
+</html>

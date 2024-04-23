@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extrair dados</title>
+<!--     <link rel="stylesheet" href="{{url_for('static',filename='extrairDados.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='index.css')}}"> -->
+    <link rel="stylesheet" href="../static/index.css">
+    <link rel="stylesheet" href="../static/extrairDados.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+</head>
+<body>
+    <header class="cabecalho">
+        <img src="{{ url_for('static', filename='images/logo.png')}}" id="logo" alt="Logo da mineração de dados do site flashscore">
+        <div class="menuDiv">
+            <a href="{{url_for('homePage')}}" class="menuItem">PÁGINA INICIAL</a>
+            <a class="menuItem active">EXTRAÇÃO</a>
+            <a href="{{url_for('listarArquivos')}}" class="menuItem">DATASETS</a>
+        </div>
+    </header>
+    <div class="main">
+        <h3>Preencha os dados para começar a extração</h3>
+        <form action="{{url_for('extrairDadosPagina')}}" id="formCriar" method=post enctype=multipart/form-data>
+            <label for="paises">País</label>
+            <select name="paises" id="paisesSelect" class="inputForm" onchange="carregarCampeonatosPorPais()" required>
+                <option value="">Selecione um país</option>
+                <optgroup label="Europa">
+                    <option value="germany">Alemanha</option>
+                    <option value="england">Inglaterra</option>
+                    <option value="italy">Itália</option>
+                </optgroup>
+            </select>
+            <label for="campeonato">Campeonato</label>
+            <select name="campeonato" id="campeonatoSelect" class="inputForm" required>
+                <option value="">Selecione um país primeiro</option>
+            </select>
+            <!-- <a class="inputForm button" onclick="carregarListaEntradas()">Selecione os dados</a>
+            <input type="hidden" name="entradasSelecionadas" id="entradasSelecionadas" required>
+            <span id="qntdEntradas"></span> -->
+            <label for="nomeDataset">Nome</label>
+            <input placeholder="Digite aqui" type="text" name="nomeModelo" id="nomeModeloInput" class="inputForm" required>
+            <label for="tempos">Tempos</label>
+            <div class="checkBoxDiv">
+                <input type="checkbox" name="tempo0" id="tempoInput0" class="inputForm" value="0">
+                <label for="tempos">Tempo Regular</label>
+            </div>
+            <div class="checkBoxDiv">
+                <input type="checkbox" name="tempo1" id="tempoInput1" class="inputForm" value="1">
+                <label for="tempos">1° Tempo</label>
+            </div>
+            <div class="checkBoxDiv">
+                <input type="checkbox" name="tempo2" id="tempoInput2" class="inputForm" value="2">
+                <label for="tempos">2° Tempo</label>
+            </div>
+            <input type="submit" id="submitButton" class="button" value="Extrair">
+        </form>
+    </div>
+    <!-- <div id="modalEntradas">
+        <div class="formDiv">
+            <a id="fecharModal" onclick="fecharModal()">X</a>
+            <form action="" id="formEntradasIA">
+                <ul id="listaEntradas">
+                    
+                </ul>
+                <div id="marcarDesmarcar">
+                    <a id="marcarButton" class="button" onclick="marcarTodas()">Marcar Todos</a>
+                    <a id="desmarcarButton" class="button" onclick="desmarcarTodas()">Desmarcar Todos</a>
+                </div>
+                <div class="submitDiv">
+                    <a id="submitButtonEnt" class="button" onclick="selecionarEntradas()">Selecionar</a>
+                    <span id="alertaNenhumaEnt">Selecione pelo menos uma entrada</span>
+                </div>
+            </form>
+        </div>
+    </div> -->
+    <div class="load">
+        <div class="load-man"></div>
+        <div id="load-text-div">
+            <h2 id="load-text">Fazendo Extração</h2>
+            <h4 id="load-text">NÃO SAIA DESSA PÁGINA</h2>
+        </div>
+    </div>
+    <script src="{{url_for('static',filename='extrairDados.js')}}"></script>
+    <script>
+        document.querySelector("#formCriar").addEventListener("submit", ()=>{
+            document.querySelector(".load").style.visibility = "visible"
+        });
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial - Extração Flashscore</title>
+<!--     <link rel="stylesheet" href="{{url_for('static',filename='index.css')}}"> -->
+    <link rel="stylesheet" href="../static/index.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <img src="{{ url_for('static', filename='images/logo.png')}}" id="logo" alt="Logo da mineração de dados do site flashscore">
+        <div class="menuDiv">
+            <a class="menuItem active">PÁGINA INICIAL</a>
+            <a href="{{url_for('extrairDadosPagina')}}" class="menuItem">EXTRAÇÃO</a>
+            <a href="{{url_for('listarArquivos')}}" class="menuItem">DATASETS</a>
+        </div>
+    </header>
+    <div class="main">
+        <h3>Seja bem-vindo ao melhor extrator de dados do site Flashscore</h3>
+        <span>Contamos com a extração das principais ligas do mundo. Você escolhe os dados que quer!</span>
+        <a href="{{url_for('extrairDadosPagina')}}" class="button">COMEÇAR</a>
+    </div>
+    <div class="background-main">
+        <img src="{{ url_for('static', filename='images/soccer-element.png')}}" class="image-background" alt="Imagem de jogadores em times europeus">
+       
+    </div>
+</body>
+</html>

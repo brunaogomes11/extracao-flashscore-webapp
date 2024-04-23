@@ -1,0 +1,11 @@
+#listaModelos {
+    list-style-type: none;
+    width: 50vw;
+    text-align: left;
+}
+
+.modeloCriadoItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
