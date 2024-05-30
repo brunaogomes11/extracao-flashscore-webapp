@@ -15,18 +15,24 @@ const campeonatosPorPais = [
 ]
 
 const entradas = [
-    {sigla: 'HTHG', signif: 'Gols do Time da Casa no 1° tempo'},
-    {sigla: 'HTAG', signif: 'Gols do Time de Fora no 1° tempo'},
-    {sigla: 'HS', signif: 'Finalizações time da casa'},
-    {sigla: 'AS', signif: 'Finalizações time de fora'},
-    {sigla: 'HST', signif: 'Chutes ao gol time da casa'},
-    {sigla: 'AST', signif: 'Chutes ao gol time de fora'},
-    {sigla: 'HC', signif: 'Escanteios para o time da casa'},
-    {sigla: 'AC', signif: 'Escanteios para o time de fora'},
-    {sigla: 'HY', signif: 'Cartões Amarelos para o time da casa'},
-    {sigla: 'AY', signif: 'Cartões Amarelos para o time de fora'},
-    {sigla: 'HR', signif: 'Cartões Vermelhos para o time da casa'},
-    {sigla: 'AR', signif: 'Cartões Vermelhos para o time de fora'}
+    {sigla: 'Gols Esperados (xG)'},
+    {sigla:'Posse de Bola'},
+    {sigla:'Tentativas de Gol'},
+    {sigla:'Chutes no Gol'},
+    {sigla:'Chutes para Fora'},
+    {sigla:'Faltas Cobradas'},
+    {sigla:'Escanteios'},
+    {sigla:'Impedimentos'},
+    {sigla:'Laterais Cobrados'},
+    {sigla:'Defesas do Goleiro'},
+    {sigla:'Faltas do time'},
+    {sigla:'Cartões Vermelhos'},
+    {sigla:'Cartões Amarelos'},
+    {sigla:'Passes Totais'},
+    {sigla:'Desarmes'},
+    {sigla:'Ataques'},
+    {sigla:'Ataques Perigosos'},
+    {sigla:'Bolas Afastadas Completadas'},
 ]
 
 let entradasSelecionadas = []
@@ -54,13 +60,11 @@ function carregarListaEntradas(){
             document.querySelector("#listaEntradas").innerHTML += `<li class="itemListaEntradas">
                 <input type="checkbox" name="entrada${i}" id="entrada${i}" checked value="${entradas[i].sigla}" class="checkboxInput">
                 <label for="entrada${i}">${entradas[i].sigla}</label>
-                <span class="descText">${entradas[i].signif}</span>
             </li>`
         } else {
             document.querySelector("#listaEntradas").innerHTML += `<li class="itemListaEntradas">
                 <input type="checkbox" name="entrada${i}" id="entrada${i}" value="${entradas[i].sigla}" class="checkboxInput">
                 <label for="entrada${i}">${entradas[i].sigla}</label>
-                <span class="descText">${entradas[i].signif}</span>
             </li>`
         }
     }

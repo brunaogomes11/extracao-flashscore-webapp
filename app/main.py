@@ -1,9 +1,11 @@
 from app.everyRounds import get_data_from_tournament
 import os
 from flask import Flask, redirect, render_template, request, send_from_directory
+from flask_socketio import SocketIO, emit
+import pandas as pd
 
 app = Flask(__name__)
-
+socketio = SocketIO(app)
 
 @app.route("/extracao", methods=["GET", "POST"])
 def extrairDadosPagina():
@@ -19,7 +21,7 @@ def extrairDadosPagina():
             if temposInput2 != None: tempos.append(temposInput2)
             campeonato = request.form['campeonato']
             pais = request.form['paises']
-            get_data_from_tournament(nomeModelo, pais, campeonato, tempos)
+            socketio.start_background_task(get_data_from_tournament, nomeModelo, pais, campeonato, tempos)
             return redirect("/extracao/completos")
         except Exception as e:
             print(e)
@@ -34,6 +36,16 @@ def listarArquivos():
 @app.route("/")
 def homePage():
     return render_template("homePage.html")
+
+# @app.route("/visualizar/<filename>", methods=['GET', 'POST'])
+@app.route("/extracao/completos/visualizar/<filename>", methods=['GET', 'POST'])
+def visualizarPaginas(filename):
+    url = 'app/data/' + filename
+    uploaded_df = pd.read_csv(url)
+    # Converting to html Table
+    uploaded_df_html = uploaded_df.to_html()
+    return render_template('visualizarDataset.html',
+                           data_var=uploaded_df_html)
 
 @app.route('/extracao/completos/<filename>', methods=['GET', 'POST'])
 def downloadArquivo(filename):

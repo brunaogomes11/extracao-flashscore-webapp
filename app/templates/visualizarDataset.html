@@ -20,30 +20,7 @@
         </div>
     </header>
     <div class="main">
-        <ul id="listaModelos">
-            <li id="caracteristicaLista">
-                <span>Nome</span>
-                <a></a>
-            </li>
-        </ul>
+        {{ data_var|safe }}
     </div>
-    <script  type="text/javascript">
-        let nomes = `{{ nomes }}`
-        nomes = nomes.replace(/[&#39;]/g, "").replace("]", "").replace("[", "").split(",")
-        for (let i = 1; i < nomes.length; i++) {
-            nomes[i] = nomes[i].trim();
-        }
-        for(let index = 0; index < nomes.length; index++) {
-            filename = nomes[index]
-            document.querySelector("#listaModelos").innerHTML += `
-            <li class="modeloCriadoItem">
-                <span>${filename}</span>
-                <div class='botoesDataset'>
-                <a href="/extracao/completos/visualizar/${filename}" class="button">Visualizar</a>
-                <a href="/extracao/completos/${filename}" class="button">Baixar</a></div>
-            </li>
-            `
-        }
-    </script>
 </body>
 </html>

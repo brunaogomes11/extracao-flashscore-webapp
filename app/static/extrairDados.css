@@ -134,3 +134,91 @@ to {
 100% {
     -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg); } }
+
+/* Modal Entradas */
+#modalEntradas {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0000004f;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formDiv {
+    width: 60vw;
+    height: auto;
+    background-color: #FFFFFF;
+    position: relative;
+    padding: 10px;
+}
+
+#formEntradasIA {
+    width: 100%;
+    height:auto;
+}
+
+#listaEntradas {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.itemListaEntradas {
+    display: inline-block;
+    position: relative;
+    padding: 5px;
+}
+
+#fecharModal {
+    font-size: 1.3em;
+    position: absolute;
+    display: block;
+    top: 10px;
+    user-select: none;
+    cursor: pointer;
+    z-index: 2;
+    right: 10px;
+}
+
+#submitButtonEnt {
+    display: inline-block;
+}
+
+#marcarDesmarcar {
+    display: flex;
+    flex-direction: row;
+}
+
+#alertaNenhumaEnt {
+    display: none;
+    font-weight: 300;
+}
+
+#marcarButton {
+    transform: scale(0.8);
+    background-color: #3d31ddb9;
+}
+
+#desmarcarButton {
+    transform: scale(0.8);
+    background-color: #3d31ddb9;
+}
+
+#marcarButton:hover {
+    transform: scale(0.9);
+}
+
+#desmarcarButton:hover {
+    transform: scale(0.9);
+}
+
+.itemListaEntradas:hover .descText {
+    visibility: visible;
+}
