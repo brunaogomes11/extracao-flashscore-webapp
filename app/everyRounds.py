@@ -37,7 +37,7 @@ def get_data_from_tournament(nomeDataset, pais, campeonato, tempos):
   for i, field in enumerate(fields):
     id_partidas.append(field.get_attribute('id').split('_')[2])
   driver.get(f'https://www.flashscore.com.br/jogo/f96Ipi6G/#/resumo-de-jogo/estatisticas-de-jogo/1')
-  estatisticas = driver.find_elements(By.CLASS_NAME, '_row_n1rcj_9')
+  estatisticas = driver.find_elements(By.CLASS_NAME, '_row_1nw75_8')
   colunasEstatisticas = ['Data', 'Round', 'HomeTeam', 'AwayTeam']
   colunasDataSet = ['Data', 'Round', 'HomeTeam', 'AwayTeam', 'HT0G', 'AT0G', 'HT1G', 'AT1G', 'HT2G', 'AT2G']
   linhas = []
