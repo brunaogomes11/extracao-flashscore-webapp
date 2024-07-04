@@ -21,7 +21,7 @@ def get_data_from_tournament(nomeDataset, pais, campeonato, tempos):
   options.add_argument("--headless=new")
   driver = webdriver.Chrome(options=options)
 
-  driver.get(f"https://www.flashscore.com.br/futebol/{pais}/{campeonato}/resultados/")
+  driver.get(f"https://www.flashscore.com.br/futebol/{pais}/{campeonato}-2023-2024/resultados/")
   WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, 'onetrust-accept-btn-handler'))).click()
   fields = driver.find_elements(By.CLASS_NAME, "event__round.event__round--static")
   for i, field in enumerate(fields):
